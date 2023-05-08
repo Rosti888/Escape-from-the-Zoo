@@ -57,7 +57,7 @@ public class PlatformMovement : MonoBehaviour
         _rigidbody.velocity = new Vector2(inputX * speed, _rigidbody.velocity.y);
 
         if (jumpInput && IsGrounded())
-        {;
+        {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
         }
         if (inputX != 0)
