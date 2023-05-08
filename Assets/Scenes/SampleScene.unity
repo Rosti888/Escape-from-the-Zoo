@@ -258,7 +258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 38786039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 071cb979fb7fb6c4090022efbf21465e, type: 3}
+  m_Script: {fileID: 11500000, guid: 356c45073985bde43b8826d478be61ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Animations: {fileID: 206076010}
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 510115206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 071cb979fb7fb6c4090022efbf21465e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4867982811a82824d97c8a157e76f17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Animations: {fileID: 808967709}
@@ -663,7 +663,6 @@ MonoBehaviour:
   groundCheckRadius: 0.05
   speed: 2
   jumpForce: 10
-  glidingSpeed: 0
   collisionMask:
     serializedVersion: 2
     m_Bits: 64
@@ -867,7 +866,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 582282486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 071cb979fb7fb6c4090022efbf21465e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f64bf30974b4ab41b2d2aa638bd1b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Animations: {fileID: 1732848038}
@@ -876,7 +875,6 @@ MonoBehaviour:
   groundCheckRadius: 0.05
   speed: 2
   jumpForce: 10
-  glidingSpeed: 0
   collisionMask:
     serializedVersion: 2
     m_Bits: 64
