@@ -8,7 +8,7 @@ public class CharacterSwitch : MonoBehaviour
     // Define the characters
 
     public SquirrelMovement Squirrel;
-    public PlatformMovement Beaver;
+    public BeaverMovement Beaver;
     public BoarMovement Boar;
 
     public GameObject[] characters;
