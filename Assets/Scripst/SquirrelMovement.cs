@@ -68,6 +68,6 @@ public class SquirrelMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionMask);
+        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionMask) != null;
     }
 }
