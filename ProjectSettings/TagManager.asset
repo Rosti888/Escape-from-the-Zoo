@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Key
+  - Beaver
+  - Boar
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - UI
   - Ground
   - Key
-  - 
-  - 
+  - Beaver
+  - Boar
   - 
   - 
   - 

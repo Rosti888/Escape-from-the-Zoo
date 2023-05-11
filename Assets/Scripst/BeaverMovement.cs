@@ -15,7 +15,7 @@ public class BeaverMovement : MonoBehaviour
 
     public LayerMask collisionMask;
 
-    void Start()
+    void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _initialGravityScale = _rigidbody.gravityScale;
