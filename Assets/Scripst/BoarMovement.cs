@@ -43,8 +43,15 @@ public class BoarMovement : MonoBehaviour
 
         if (jumpInput && IsGrounded())
         {
+            Animations.SetBool("IsJumping", true);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
         }
+
+        else
+        {
+            Animations.SetBool("IsJumping", false);
+        }
+
         if (inputX != 0)
         {
             transform.localScale = new Vector3(Mathf.Sign(inputX), 1, 1);
