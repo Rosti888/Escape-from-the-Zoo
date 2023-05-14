@@ -9,6 +9,7 @@ TagManager:
   - Boar
   - Cage
   - WaterZone
+  - Ground
   layers:
   - Default
   - TransparentFX

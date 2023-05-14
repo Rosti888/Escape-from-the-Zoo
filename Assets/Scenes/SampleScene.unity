@@ -519,8 +519,8 @@ GameObject:
   - component: {fileID: 237112307}
   - component: {fileID: 237112306}
   m_Layer: 6
-  m_Name: Blok
-  m_TagString: Untagged
+  m_Name: Block
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -898,7 +898,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: -10}
+  m_LocalPosition: {x: 0.02, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -949,8 +949,8 @@ GameObject:
   - component: {fileID: 582282487}
   - component: {fileID: 582282490}
   - component: {fileID: 582282493}
-  - component: {fileID: 582282494}
   - component: {fileID: 582282495}
+  - component: {fileID: 582282496}
   m_Layer: 8
   m_Name: CharacterBeaver
   m_TagString: Player
@@ -1017,32 +1017,6 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 584
---- !u!61 &582282494
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582282486}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.3128152, y: 0.37937182}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.6256304, y: 0.8003305}
-  m_EdgeRadius: 0
 --- !u!114 &582282495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1055,6 +1029,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0baf2a22c0134b44a879aae89f9fc6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &582282496
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582282486}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.3223473, y: 0.43114233}
+  m_Size: {x: 1.6608263, y: 0.6534789}
+  m_Direction: 1
 --- !u!1 &808967706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1288,7 @@ GameObject:
   - component: {fileID: 871336346}
   - component: {fileID: 871336345}
   m_Layer: 6
-  m_Name: Ground (1)
+  m_Name: Ground 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1409,8 +1399,8 @@ GameObject:
   - component: {fileID: 905189782}
   - component: {fileID: 905189781}
   m_Layer: 6
-  m_Name: Blok (1)
-  m_TagString: Untagged
+  m_Name: Block 1
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
