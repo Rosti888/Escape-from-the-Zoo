@@ -8,6 +8,7 @@ TagManager:
   - Beaver
   - Boar
   - Cage
+  - WaterZone
   layers:
   - Default
   - TransparentFX
