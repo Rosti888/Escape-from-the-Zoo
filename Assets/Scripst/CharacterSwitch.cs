@@ -27,7 +27,9 @@ public class CharacterSwitch : MonoBehaviour
         {
             Squirrel.enabled = true;
             Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            Beaver.DisableMovementAnimation();
             Beaver.enabled = false;
+            Boar.DisableMovementAnimation();
             Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             Boar.enabled = false;
             Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -37,6 +39,8 @@ public class CharacterSwitch : MonoBehaviour
         {
             Squirrel.enabled = false;
             Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Squirrel.DisableMovementAnimation();
+            Boar.DisableMovementAnimation();
             Beaver.enabled = true;
             Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Boar.enabled = false;
@@ -46,6 +50,8 @@ public class CharacterSwitch : MonoBehaviour
         {
             Squirrel.enabled = false;
             Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Squirrel.DisableMovementAnimation();
+            Beaver.DisableMovementAnimation();
             Beaver.enabled = false;
             Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             Boar.enabled = true;

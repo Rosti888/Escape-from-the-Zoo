@@ -57,7 +57,10 @@ public class BoarMovement : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sign(inputX), 1, 1);
         }
     }
-
+    public void DisableMovementAnimation()
+    {
+        Animations.SetBool("IsRunning", false);
+    }
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionMask);

@@ -18,7 +18,8 @@ public class SquirrelMovement : MonoBehaviour
     public BoxCollider2D rightCollider;
 
     public LayerMask collisionMask;
-
+    public LayerMask animalsMask;
+ 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -66,6 +67,38 @@ public class SquirrelMovement : MonoBehaviour
         }
     }
 
+    public void DisableMovementAnimation()
+    {
+        Animations.SetBool("IsRunning", false);
+
+        RaycastHit2D[] results = new RaycastHit2D[1];
+        ContactFilter2D contactFilter2D = new ContactFilter2D();
+        contactFilter2D.SetLayerMask(animalsMask);
+        if (Physics2D.Raycast(transform.position, -transform.up, contactFilter2D, results, .01f) > 0)
+        {
+            Debug.Log(results[0].collider.name);
+            Debug.Log("Im on an animal");
+            Transform newParent = null;
+            newParent = results[0].collider.transform;
+            transform.SetParent(newParent);
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+                rb.simulated = false;
+            //Change Parent
+            //transform.SetParent( [Boar / Beaver Transform] )
+            //rigidbody.simulated = false
+        }
+    }
+
+    public void ResetParent()
+    {
+        transform.SetParent(null);
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+            rb.simulated = false;
+    }
+
+    //Method to reset the parent. transform.SetParent(null) + rigidbody.simulated = true
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionMask) != null;
