@@ -6,15 +6,14 @@ public class Button : MonoBehaviour
 {
     public GameObject button;
     public GameObject door;
-    //public Animator anim;
+    public Animator anim;
+    public BoxCollider2D collider;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -24,16 +23,16 @@ public class Button : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            door.SetActive(false);
+            collider.enabled = false;
             button.SetActive(false);
-            //anim.SetBool("isOpen", true);
+            anim.SetBool("isOpen", true);
         }
 
         else
         {
-            door.SetActive(true);
+            collider.enabled = true;
             button.SetActive(true);
-            //anim.SetBool("isOpen", false);
+            anim.SetBool("isOpen", false);
         }
     }
 
@@ -41,9 +40,9 @@ public class Button : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            door.SetActive(true);
+            collider.enabled = true;
             button.SetActive(true);
-            //anim.SetBool("isOpen", false);
+            anim.SetBool("isOpen", false);
         }
     }
 }
