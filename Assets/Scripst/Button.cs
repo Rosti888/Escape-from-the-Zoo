@@ -6,11 +6,12 @@ public class Button : MonoBehaviour
 {
     public GameObject button;
     public GameObject door;
+    //public Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,12 +26,14 @@ public class Button : MonoBehaviour
         {
             door.SetActive(false);
             button.SetActive(false);
+            //anim.SetBool("isOpen", true);
         }
 
         else
         {
             door.SetActive(true);
             button.SetActive(true);
+            //anim.SetBool("isOpen", false);
         }
     }
 
@@ -40,6 +43,7 @@ public class Button : MonoBehaviour
         {
             door.SetActive(true);
             button.SetActive(true);
+            //anim.SetBool("isOpen", false);
         }
     }
 }
