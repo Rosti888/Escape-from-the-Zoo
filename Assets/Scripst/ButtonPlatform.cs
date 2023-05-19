@@ -2,37 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour
+public class ButtonPlatform : MonoBehaviour
 {
     public GameObject button;
-    public GameObject door;
-    public Animator anim;
-    public new BoxCollider2D collider;
+    public GameObject platform;
+    public Transform pointStart, pointEnd;
+    public float speed;
+
+    private Vector2 targetPos;
 
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        targetPos = pointStart.position;
     }
 
     void Update()
     {
-        
+        platform.transform.position = Vector2.MoveTowards(platform.transform.position, targetPos, speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            collider.enabled = false;
+            targetPos = pointEnd.position;
             button.SetActive(false);
-            anim.SetBool("isOpen", true);
         }
 
         else
         {
-            collider.enabled = true;
+            targetPos = pointStart.position;
             button.SetActive(true);
-            anim.SetBool("isOpen", false);
         }
     }
 
@@ -40,9 +40,8 @@ public class Button : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            collider.enabled = true;
+            targetPos = pointStart.position;
             button.SetActive(true);
-            anim.SetBool("isOpen", false);
         }
     }
 }
