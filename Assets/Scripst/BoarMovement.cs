@@ -65,4 +65,27 @@ public class BoarMovement : MonoBehaviour
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionMask);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
+        {
+            ContactPoint2D[] contacts = collision.contacts;
+            foreach (ContactPoint2D contact in contacts)
+            {
+                if (contact.normal == Vector2.up)
+                {
+                    this.transform.parent = collision.transform;
+                    break;
+                }
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
+        {
+            this.transform.parent = null;
+        }
+    }
 }

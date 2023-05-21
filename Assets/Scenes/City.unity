@@ -232,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138451320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.88, y: -4.159, z: 0.09589451}
+  m_LocalPosition: {x: -4.12, y: -3.71, z: 0.09589451}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -945,7 +945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742153082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.54, y: -0.551, z: 0.14093488}
+  m_LocalPosition: {x: -8.37, y: -4.27, z: 0.14093488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -972,7 +972,7 @@ MonoBehaviour:
   groundCheck: {fileID: 509710258}
   groundCheckRadius: 0.05
   speed: 2
-  jumpForce: 10
+  jumpForce: 11
   glidingSpeed: 1
   rightCollider: {fileID: 0}
   collisionMask:
@@ -2411,7 +2411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037993852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.11, y: -3.38, z: 0}
+  m_LocalPosition: {x: -6.56, y: -4.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
