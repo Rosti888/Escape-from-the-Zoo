@@ -19,7 +19,7 @@ public class SquirrelMovement : MonoBehaviour
 
     public LayerMask collisionMask;
     public LayerMask animalsMask;
- 
+
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -77,16 +77,13 @@ public class SquirrelMovement : MonoBehaviour
         if (Physics2D.Raycast(transform.position, -transform.up, contactFilter2D, results, .01f) > 0)
         {
             Debug.Log(results[0].collider.name);
-            Debug.Log("Im on an animal");
+            Debug.Log("I'm on an animal");
             Transform newParent = null;
             newParent = results[0].collider.transform;
             transform.SetParent(newParent);
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             if (rb != null)
                 rb.simulated = false;
-            //Change Parent
-            //transform.SetParent( [Boar / Beaver Transform] )
-            //rigidbody.simulated = false
         }
     }
 
@@ -98,7 +95,6 @@ public class SquirrelMovement : MonoBehaviour
             rb.simulated = false;
     }
 
-    //Method to reset the parent. transform.SetParent(null) + rigidbody.simulated = true
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionMask) != null;
@@ -111,6 +107,7 @@ public class SquirrelMovement : MonoBehaviour
             keyObject = other.gameObject;
         }
     }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Cage") && keyObject != null && rightCollider.enabled)
@@ -121,6 +118,7 @@ public class SquirrelMovement : MonoBehaviour
             rightCollider.enabled = false;
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Cage") && keyObject != null && rightCollider.enabled)
@@ -129,6 +127,27 @@ public class SquirrelMovement : MonoBehaviour
             keyObject.SetActive(false);
             keyObject = null;
             rightCollider.enabled = false;
+        }
+
+        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
+        {
+            ContactPoint2D[] contacts = collision.contacts;
+            foreach (ContactPoint2D contact in contacts)
+            {
+                if (contact.normal == Vector2.up)
+                {
+                    this.transform.parent = collision.transform;
+                    break;
+                }
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
+        {
+            this.transform.parent = null;
         }
     }
 }
