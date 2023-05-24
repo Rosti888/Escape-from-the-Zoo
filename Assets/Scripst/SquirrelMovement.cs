@@ -92,7 +92,7 @@ public class SquirrelMovement : MonoBehaviour
         transform.SetParent(null);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
-            rb.simulated = false;
+            rb.simulated = true;
     }
 
     private bool IsGrounded()
