@@ -28,6 +28,7 @@ public class CharacterSwitch : MonoBehaviour
             Squirrel.enabled = true;
             Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Beaver.DisableMovementAnimation();
+            Squirrel.ResetParent();
             Beaver.enabled = false;
             Boar.DisableMovementAnimation();
             Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
