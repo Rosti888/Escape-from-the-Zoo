@@ -596,7 +596,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 0}
   groundCheck: {fileID: 1907077465}
   groundCheckRadius: 0.05
-  speed: 2
+  speed: 2.5
   jumpForce: 10
   collisionMask:
     serializedVersion: 2
@@ -1009,7 +1009,7 @@ MonoBehaviour:
   Obstacle: {fileID: 99653524}
   AnimObstacle: {fileID: 1223430436}
   groundCheckRadius: 0.05
-  speed: 2
+  speed: 2.5
   jumpForce: 10
   isDashing: 0
   dashingVelocity: 6
@@ -1550,7 +1550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266694244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -1.78, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1604,8 +1604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   borderThickness: 10
-  lLimit: 0
-  rLimit: 12.58
+  lLimit: -1.78
+  rLimit: 14.36
 --- !u!1 &1273246112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 0}
   groundCheck: {fileID: 1957661943}
   groundCheckRadius: 0.05
-  speed: 2
+  speed: 2.5
   jumpForce: 10
   glidingSpeed: 1
   rightCollider: {fileID: 0}

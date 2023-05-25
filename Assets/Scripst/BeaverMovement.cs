@@ -68,7 +68,7 @@ public class BeaverMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
+        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright") || collision.gameObject.name.Equals("CharacterBoar"))
         {
             ContactPoint2D[] contacts = collision.contacts;
             foreach (ContactPoint2D contact in contacts)
@@ -84,7 +84,7 @@ public class BeaverMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
+        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright") || collision.gameObject.name.Equals("CharacterBoar"))
         {
             this.transform.parent = null;
         }
