@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
+    public bool isBeaver;
+
     private Rigidbody2D rb;
     public GameObject water;
 
@@ -21,7 +23,7 @@ public class PlayerLife : MonoBehaviour
             RestartLevel();
         }
 
-        if (collision.gameObject.CompareTag("WaterZone"))
+        if (collision.gameObject.CompareTag("WaterZone") && !isBeaver)
         {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), water.GetComponent<Collider2D>());
         }
