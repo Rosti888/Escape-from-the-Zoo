@@ -74,7 +74,8 @@ public class SquirrelMovement : MonoBehaviour
         RaycastHit2D[] results = new RaycastHit2D[1];
         ContactFilter2D contactFilter2D = new ContactFilter2D();
         contactFilter2D.SetLayerMask(animalsMask);
-        if (Physics2D.Raycast(transform.position, -transform.up, contactFilter2D, results, .01f) > 0)
+        Debug.DrawLine(transform.position, transform.position + transform.up * -.1f, Color.green, 100f);
+        if (Physics2D.Raycast(transform.position, transform.position - transform.up, contactFilter2D, results, .1f) > 0)
         {
             Debug.Log(results[0].collider.name);
             Debug.Log("I'm on an animal");
@@ -127,6 +128,7 @@ public class SquirrelMovement : MonoBehaviour
             keyObject.SetActive(false);
             keyObject = null;
             rightCollider.enabled = false;
+            Physics2D.queriesStartInColliders = true;
         }
 
         if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))

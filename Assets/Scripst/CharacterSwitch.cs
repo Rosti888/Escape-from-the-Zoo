@@ -29,32 +29,32 @@ public class CharacterSwitch : MonoBehaviour
             Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Beaver.DisableMovementAnimation();
             Squirrel.ResetParent();
-            Beaver.enabled = false;
             Boar.DisableMovementAnimation();
             Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            Boar.enabled = false;
             Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Beaver.enabled = false;
+            Boar.enabled = false;
 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Squirrel.enabled = false;
             Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             Squirrel.DisableMovementAnimation();
+            Squirrel.enabled = false;
             Boar.DisableMovementAnimation();
             Beaver.enabled = true;
             Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            Boar.enabled = false;
             Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Boar.enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Squirrel.enabled = false;
             Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             Squirrel.DisableMovementAnimation();
+            Squirrel.enabled = false;
             Beaver.DisableMovementAnimation();
-            Beaver.enabled = false;
             Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Beaver.enabled = false;
             Boar.enabled = true;
             Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }

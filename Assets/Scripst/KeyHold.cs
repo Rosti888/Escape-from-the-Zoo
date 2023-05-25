@@ -11,7 +11,7 @@ public class KeyHold : MonoBehaviour
     public float throwObject = 2;
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -31,8 +31,8 @@ public class KeyHold : MonoBehaviour
             else
             {
                 hold = false;
-
-                if(hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+                Physics2D.queriesStartInColliders = true;
+                if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
                 {
                     hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwObject;
                 }
@@ -43,7 +43,7 @@ public class KeyHold : MonoBehaviour
         {
             hit.collider.gameObject.transform.position = holdPoint.position;
 
-            if(holdPoint.position.x > transform.position.x && hold == true)
+            if (holdPoint.position.x > transform.position.x && hold == true)
             {
                 hit.collider.gameObject.transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
             }
