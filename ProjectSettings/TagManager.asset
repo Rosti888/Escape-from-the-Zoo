@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - DeadZone
   - Tree
+  - Obstacle
   layers:
   - Default
   - TransparentFX
