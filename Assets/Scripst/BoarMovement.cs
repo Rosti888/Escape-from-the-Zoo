@@ -7,22 +7,33 @@ public class BoarMovement : MonoBehaviour
     public Animator Animations;
     public Rigidbody2D _rigidbody;
     public Transform groundCheck;
+    public GameObject Obstacle;
+    public Animator AnimObstacle;
 
     public float groundCheckRadius = 0.05f;
     public float speed = 2f;
     public float jumpForce = 10f;
-    private float _initialGravityScale;
+
+    private bool canDash = true;
+    public bool isDashing;
+    public float dashingVelocity = 4f;
+    public float dashingTime = 0.3f;
+    private float dashingCooldown = 1f;
 
     public LayerMask collisionMask;
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _initialGravityScale = _rigidbody.gravityScale;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F) && canDash && IsGrounded())
+        {
+            StartCoroutine(Dash());
+        }
+
 
         var inputX = Input.GetAxisRaw("Horizontal");
 
@@ -39,7 +50,10 @@ public class BoarMovement : MonoBehaviour
 
         var jumpInput = Input.GetButtonDown("Jump");
 
-        _rigidbody.velocity = new Vector2(inputX * speed, _rigidbody.velocity.y);
+        if (!isDashing)
+        {
+            _rigidbody.velocity = new Vector2(inputX * speed, _rigidbody.velocity.y);
+        }
 
         if (jumpInput && IsGrounded())
         {
@@ -57,6 +71,7 @@ public class BoarMovement : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sign(inputX), 1, 1);
         }
     }
+
     public void DisableMovementAnimation()
     {
         Animations.SetBool("IsRunning", false);
@@ -87,5 +102,30 @@ public class BoarMovement : MonoBehaviour
         {
             this.transform.parent = null;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Obstacle") && isDashing)
+        {
+            AnimObstacle.SetBool("IsDestroying", true);
+            Obstacle.SetActive(false);
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = _rigidbody.gravityScale;
+        _rigidbody.gravityScale = 0f;
+        Animations.SetBool("IsDashing", true);
+        _rigidbody.velocity = new Vector2(transform.localScale.x * dashingVelocity, 0f);
+        yield return new WaitForSeconds(dashingTime);
+        Animations.SetBool("IsDashing", false);
+        _rigidbody.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
