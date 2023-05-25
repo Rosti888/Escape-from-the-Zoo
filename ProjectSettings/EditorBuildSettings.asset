@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/City.unity
     guid: abd40cefbf4e23d47907fbb4a4cb79ba
+  - enabled: 1
+    path: Assets/Scenes/Forest.unity
+    guid: 3d9d972572b172c46a7e11b9e19eb3a1
   m_configObjects: {}
