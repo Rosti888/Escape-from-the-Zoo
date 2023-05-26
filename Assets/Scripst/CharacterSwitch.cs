@@ -16,9 +16,9 @@ public class CharacterSwitch : MonoBehaviour
         Squirrel.enabled = true;
         Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         Beaver.enabled = false;
-        Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
         Boar.enabled = false;
-        Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 
     void Update()
@@ -30,30 +30,30 @@ public class CharacterSwitch : MonoBehaviour
             Beaver.DisableMovementAnimation();
             Squirrel.ResetParent();
             Boar.DisableMovementAnimation();
-            Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
+            Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
             Beaver.enabled = false;
             Boar.enabled = false;
 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
             Squirrel.DisableMovementAnimation();
             Squirrel.enabled = false;
             Boar.DisableMovementAnimation();
             Beaver.enabled = true;
             Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
             Boar.enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
             Squirrel.DisableMovementAnimation();
             Squirrel.enabled = false;
             Beaver.DisableMovementAnimation();
-            Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
             Beaver.enabled = false;
             Boar.enabled = true;
             Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
