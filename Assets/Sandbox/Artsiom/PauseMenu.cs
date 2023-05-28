@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -16,8 +14,8 @@ public class PauseMenu : MonoBehaviour
 
     public CharacterSwitch characterSwitch;
 
-    public UnityEngine.UI.Button pauseButton;
-    public UnityEngine.UI.Button restartButton;
+    public Button pauseButton;
+    public Button restartButton;
 
     public bool isPaused;
 
@@ -35,9 +33,17 @@ public class PauseMenu : MonoBehaviour
             {
                 ResumeGame();
             }
-            else
+            else if(!isPaused)
             {
                 PauseGame();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (!isPaused)
+            {
+                RestartLevel();
             }
         }
     }
@@ -47,8 +53,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        Debug.Log(isPaused);
         pauseButton.enabled = false;
-        restartButton.enabled = false;
         Squirrel.enabled = false;
         Beaver.enabled = false;
         Boar.enabled = false;
@@ -59,11 +65,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        Debug.Log(isPaused);
         pauseButton.enabled = true;
-        restartButton.enabled = true;
 
         if (characterSwitch.currentIndex == 0)
         {
+            Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Squirrel.enabled = true;
             Beaver.enabled = false;
             Boar.enabled = false;
@@ -71,6 +78,7 @@ public class PauseMenu : MonoBehaviour
 
         if (characterSwitch.currentIndex == 1)
         {
+            Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Squirrel.enabled = false;
             Beaver.enabled = true;
             Boar.enabled = false;
@@ -78,6 +86,7 @@ public class PauseMenu : MonoBehaviour
 
         if (characterSwitch.currentIndex == 2)
         {
+            Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Squirrel.enabled = false;
             Beaver.enabled = false;
             Boar.enabled = true;
@@ -92,5 +101,11 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void RestartLevel()
+    {
+        characterSwitch.StartLevel();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
