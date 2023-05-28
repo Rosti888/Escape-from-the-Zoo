@@ -14,6 +14,7 @@ public class BeaverMovement : MonoBehaviour
     private float _initialGravityScale;
 
     public LayerMask collisionMask;
+    public LayerMask animalsMask;
 
     void Awake()
     {
@@ -60,15 +61,39 @@ public class BeaverMovement : MonoBehaviour
     public void DisableMovementAnimation()
     {
         Animations.SetBool("IsRunning", false);
+
+        RaycastHit2D[] results = new RaycastHit2D[1];
+        ContactFilter2D contactFilter2D = new ContactFilter2D();
+        contactFilter2D.SetLayerMask(animalsMask);
+        Debug.DrawLine(transform.position, transform.position + transform.up * -.1f, Color.green, 100f);
+        if (Physics2D.Raycast(transform.position, transform.position - transform.up, contactFilter2D, results, .1f) > 0)
+        {
+            Debug.Log(results[0].collider.name);
+            Debug.Log("I'm on an animal");
+            Transform newParent = null;
+            newParent = results[0].collider.transform;
+            transform.SetParent(newParent);
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+                rb.simulated = false;
+        }
     }
 
-    private bool IsGrounded()
+    public void ResetParent()
+    {
+        transform.SetParent(null);
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+            rb.simulated = true;
+    }
+
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionMask);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright") || collision.gameObject.name.Equals("CharacterBoar"))
+        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
         {
             ContactPoint2D[] contacts = collision.contacts;
             foreach (ContactPoint2D contact in contacts)
@@ -84,7 +109,7 @@ public class BeaverMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright") || collision.gameObject.name.Equals("CharacterBoar"))
+        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
         {
             this.transform.parent = null;
         }

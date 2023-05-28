@@ -96,7 +96,7 @@ public class SquirrelMovement : MonoBehaviour
             rb.simulated = true;
     }
 
-    private bool IsGrounded()
+    public  bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionMask) != null;
     }
@@ -106,6 +106,19 @@ public class SquirrelMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Key") && keyObject == null)
         {
             keyObject = other.gameObject;
+        }
+
+        if (other.gameObject.name.Equals("platformupdown") || other.gameObject.name.Equals("platformleftright"))
+        {
+            ContactPoint2D[] contacts = other.contacts;
+            foreach (ContactPoint2D contact in contacts)
+            {
+                if (contact.normal == Vector2.up)
+                {
+                    this.transform.parent = other.transform;
+                    break;
+                }
+            }
         }
     }
 
@@ -129,19 +142,6 @@ public class SquirrelMovement : MonoBehaviour
             keyObject = null;
             rightCollider.enabled = false;
             Physics2D.queriesStartInColliders = true;
-        }
-
-        if (collision.gameObject.name.Equals("platformupdown") || collision.gameObject.name.Equals("platformleftright"))
-        {
-            ContactPoint2D[] contacts = collision.contacts;
-            foreach (ContactPoint2D contact in contacts)
-            {
-                if (contact.normal == Vector2.up)
-                {
-                    this.transform.parent = collision.transform;
-                    break;
-                }
-            }
         }
     }
 

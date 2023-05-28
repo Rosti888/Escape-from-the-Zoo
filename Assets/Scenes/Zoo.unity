@@ -261,7 +261,7 @@ MonoBehaviour:
     m_Bits: 960
   animalsMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!114 &38786048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,6 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696dceba7e19a544da0cb5fdbf171b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PauseMenu: {fileID: 1908667583}
   Squirrel: {fileID: 38786047}
   Beaver: {fileID: 582282493}
   Boar: {fileID: 510115213}
@@ -1330,6 +1331,7 @@ MonoBehaviour:
   - {fileID: 38786039}
   - {fileID: 582282486}
   - {fileID: 510115206}
+  currentIndex: 0
 --- !u!1 &432527139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,7 +2212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556551181}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.765, y: 1.412, z: 0}
+  m_LocalPosition: {x: -11.275001, y: 1.412, z: 0}
   m_LocalScale: {x: 1, y: 1.0742553, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2443,6 +2445,9 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 600
+  animalsMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!70 &582282496
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3222,7 +3227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844647500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.77, y: -2.082, z: 0}
+  m_LocalPosition: {x: 22.28, y: -2.082, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3265,7 +3270,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 844647500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded894d6869d2d04891bf7ba5e0ffe28, type: 3}
+  m_Script: {fileID: 11500000, guid: c6db7863658a3744cb5b4c2fe97213c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1140920061}
@@ -3905,7 +3910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140920061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.77, y: -2.082, z: 0}
+  m_LocalPosition: {x: 22.28, y: -2.082, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5807,6 +5812,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1829809808}
+  Squirrel: {fileID: 38786047}
+  Beaver: {fileID: 582282493}
+  Boar: {fileID: 510115213}
+  characterSwitch: {fileID: 371428642}
+  pauseButton: {fileID: 325960467}
+  restartButton: {fileID: 531876857}
   isPaused: 0
 --- !u!114 &1908667584
 MonoBehaviour:
