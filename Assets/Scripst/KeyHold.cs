@@ -30,11 +30,14 @@ public class KeyHold : MonoBehaviour
             }
             else
             {
-                hold = false;
-                Physics2D.queriesStartInColliders = true;
-                if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+                if (hit.collider != null && hit.collider.CompareTag("Cage"))
                 {
-                    hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwObject;
+                    hold = false;
+                    Physics2D.queriesStartInColliders = true;
+                    if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+                    {
+                        hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwObject;
+                    }
                 }
             }
         }
@@ -43,11 +46,11 @@ public class KeyHold : MonoBehaviour
         {
             hit.collider.gameObject.transform.position = holdPoint.position;
 
-            if (holdPoint.position.x > transform.position.x && hold == true)
+            if (holdPoint.position.x > transform.position.x && hold)
             {
                 hit.collider.gameObject.transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
             }
-            else if (holdPoint.position.x < transform.position.x && hold == true)
+            else if (holdPoint.position.x < transform.position.x && hold)
             {
                 hit.collider.gameObject.transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y * -1);
             }
