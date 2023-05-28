@@ -7,6 +7,10 @@ public class CharacterSwitch : MonoBehaviour
 {
     public PauseMenu PauseMenu;
 
+    public GameObject IconSquirrelSelected;
+    public GameObject IconBeaverlSelected;
+    public GameObject IconBoarSelected;
+
     public SquirrelMovement Squirrel;
     public BeaverMovement Beaver;
     public BoarMovement Boar;
@@ -17,12 +21,7 @@ public class CharacterSwitch : MonoBehaviour
 
     private void Start()
     {
-        Squirrel.enabled = true;
-        Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        Beaver.enabled = false;
-        Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-        Boar.enabled = false;
-        Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        StartLevel();
     }
 
     void Update()
@@ -37,6 +36,9 @@ public class CharacterSwitch : MonoBehaviour
             Beaver.enabled = false;
             Boar.enabled = false;
             currentIndex = 0;
+            IconSquirrelSelected.SetActive(true);
+            IconBeaverlSelected.SetActive(false);
+            IconBoarSelected.SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && !PauseMenu.isPaused)
         {
@@ -48,6 +50,9 @@ public class CharacterSwitch : MonoBehaviour
             Squirrel.enabled = false;
             Boar.enabled = false;
             currentIndex = 1;
+            IconSquirrelSelected.SetActive(false);
+            IconBeaverlSelected.SetActive(true);
+            IconBoarSelected.SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && !PauseMenu.isPaused)
         {
@@ -58,6 +63,9 @@ public class CharacterSwitch : MonoBehaviour
             Beaver.enabled = false;
             Squirrel.enabled = false;
             currentIndex = 2;
+            IconSquirrelSelected.SetActive(false);
+            IconBeaverlSelected.SetActive(false);
+            IconBoarSelected.SetActive(true);
         }
 
         if (!Squirrel.enabled && Squirrel.IsGrounded())
@@ -74,5 +82,21 @@ public class CharacterSwitch : MonoBehaviour
         {
             Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
+    }
+
+    public void StartLevel()
+    {
+        currentIndex = 0;
+
+        Squirrel.enabled = true;
+        Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        Beaver.enabled = false;
+        Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        Boar.enabled = false;
+        Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        IconSquirrelSelected.SetActive(true);
+        IconBeaverlSelected.SetActive(false);
+        IconBoarSelected.SetActive(false);
     }
 }
