@@ -14,7 +14,8 @@ public class CharacterSwitch : MonoBehaviour
     public SquirrelMovement Squirrel;
     public BeaverMovement Beaver;
     public BoarMovement Boar;
-        
+
+
     public GameObject[] characters;
 
     public int currentIndex;
@@ -39,6 +40,11 @@ public class CharacterSwitch : MonoBehaviour
             IconSquirrelSelected.SetActive(true);
             IconBeaverlSelected.SetActive(false);
             IconBoarSelected.SetActive(false);
+
+            Squirrel._rigidbody.simulated = true;
+
+            Beaver._rigidbody.simulated = true;
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && !PauseMenu.isPaused)
         {
@@ -53,6 +59,18 @@ public class CharacterSwitch : MonoBehaviour
             IconSquirrelSelected.SetActive(false);
             IconBeaverlSelected.SetActive(true);
             IconBoarSelected.SetActive(false);
+
+            if (Squirrel.isOnBeaver)
+            {
+                Squirrel._rigidbody.simulated = false;
+            }
+            else
+            {
+                Squirrel._rigidbody.simulated = true;
+            }
+
+            Beaver._rigidbody.simulated = true;
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && !PauseMenu.isPaused)
         {
@@ -66,6 +84,24 @@ public class CharacterSwitch : MonoBehaviour
             IconSquirrelSelected.SetActive(false);
             IconBeaverlSelected.SetActive(false);
             IconBoarSelected.SetActive(true);
+
+            if (Squirrel.isOnBeaver)
+            {
+                Squirrel._rigidbody.simulated = false;
+            }
+            else
+            {
+                Squirrel._rigidbody.simulated = true;
+            }
+
+            if (Beaver.isOnBoar)
+            {
+                Beaver._rigidbody.simulated = false;
+            }
+            else
+            {
+                Beaver._rigidbody.simulated = true;
+            }
         }
 
         if (!Squirrel.enabled && Squirrel.IsGrounded())
