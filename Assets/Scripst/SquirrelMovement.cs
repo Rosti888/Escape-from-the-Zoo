@@ -16,6 +16,7 @@ public class SquirrelMovement : MonoBehaviour
     private float _initialGravityScale;
     private GameObject keyObject = null;
     public BoxCollider2D rightCollider;
+    public bool isOnBeaver;
 
     public LayerMask collisionMask;
     public LayerMask animalsMask;
@@ -82,18 +83,24 @@ public class SquirrelMovement : MonoBehaviour
             Transform newParent = null;
             newParent = results[0].collider.transform;
             transform.SetParent(newParent);
+            isOnBeaver = true;
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            /*
             if (rb != null)
                 rb.simulated = false;
+            */
         }
     }
 
     public void ResetParent()
     {
+        isOnBeaver = false;
         transform.SetParent(null);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        /*
         if (rb != null)
             rb.simulated = true;
+        */
     }
 
     public  bool IsGrounded()

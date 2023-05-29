@@ -12,10 +12,12 @@ public class BeaverMovement : MonoBehaviour
     public float speed = 2f;
     public float jumpForce = 10f;
     private float _initialGravityScale;
+    public CharacterSwitch characterSwitch;
 
     public LayerMask collisionMask;
     public LayerMask animalsMask;
 
+    public bool isOnBoar;
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -24,7 +26,6 @@ public class BeaverMovement : MonoBehaviour
 
     void Update()
     {
-
         var inputX = Input.GetAxisRaw("Horizontal");
 
         if (inputX == 0)
@@ -61,7 +62,6 @@ public class BeaverMovement : MonoBehaviour
     public void DisableMovementAnimation()
     {
         Animations.SetBool("IsRunning", false);
-
         RaycastHit2D[] results = new RaycastHit2D[1];
         ContactFilter2D contactFilter2D = new ContactFilter2D();
         contactFilter2D.SetLayerMask(animalsMask);
@@ -73,14 +73,18 @@ public class BeaverMovement : MonoBehaviour
             Transform newParent = null;
             newParent = results[0].collider.transform;
             transform.SetParent(newParent);
+            isOnBoar = true;
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            /*
             if (rb != null)
                 rb.simulated = false;
+            */
         }
     }
 
     public void ResetParent()
     {
+        isOnBoar = false;
         transform.SetParent(null);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -114,4 +118,26 @@ public class BeaverMovement : MonoBehaviour
             this.transform.parent = null;
         }
     }
+
+    public void CheckOnBoar()
+    {
+        RaycastHit2D[] results = new RaycastHit2D[1];
+        ContactFilter2D contactFilter2D = new ContactFilter2D();
+        contactFilter2D.SetLayerMask(animalsMask);
+        Debug.DrawLine(transform.position, transform.position + transform.up * -.1f, Color.green, 100f);
+        if (Physics2D.Raycast(transform.position, transform.position - transform.up, contactFilter2D, results, .1f) > 0)
+        {
+            //Debug.Log(results[0].collider.name);
+            Debug.Log("I'm on an animal");
+            Transform newParent = null;
+            newParent = results[0].collider.transform;
+            transform.SetParent(newParent);
+            isOnBoar = true;
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            Debug.Log(rb);
+            if (rb != null)
+                rb.simulated = false;
+        }
+    }
+
 }

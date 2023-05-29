@@ -1650,6 +1650,7 @@ MonoBehaviour:
   jumpForce: 11
   glidingSpeed: 1
   rightCollider: {fileID: 0}
+  isOnBeaver: 0
   collisionMask:
     serializedVersion: 2
     m_Bits: 960
@@ -4465,17 +4466,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animations: {fileID: 1010586346}
-  _rigidbody: {fileID: 0}
+  _rigidbody: {fileID: 2037993855}
   groundCheck: {fileID: 1979616371}
   groundCheckRadius: 0.05
   speed: 2.5
   jumpForce: 10
+  characterSwitch: {fileID: 1057654549}
   collisionMask:
     serializedVersion: 2
     m_Bits: 584
   animalsMask:
     serializedVersion: 2
     m_Bits: 512
+  isOnBoar: 0
 --- !u!114 &2037993858
 MonoBehaviour:
   m_ObjectHideFlags: 0
