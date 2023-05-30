@@ -87,8 +87,8 @@ public class BeaverMovement : MonoBehaviour
         isOnBoar = false;
         transform.SetParent(null);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-            rb.simulated = true;
+        //if (rb != null)
+        //    rb.simulated = true;
     }
 
     public bool IsGrounded()

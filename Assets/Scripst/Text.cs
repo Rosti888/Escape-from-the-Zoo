@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class Text : MonoBehaviour
 {
-    public SpriteRenderer displaySprite; 
-    private bool isColliding; 
+    public TutorialTip tutorialTip;
+    public SpriteRenderer tipSpriteRenderer;
 
     private void Start()
     {
-        displaySprite.enabled = false; 
+        tipSpriteRenderer.sprite = tutorialTip.tipSprite;
+        if (tutorialTip.isTipEnabledOnStart)
+        {
+            tipSpriteRenderer.enabled = true;
+        }
+        else
+        {
+            tipSpriteRenderer.enabled = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) 
+        if (collision.gameObject.name == tutorialTip.gameObjectName) 
         {
-            isColliding = true; 
-            displaySprite.enabled = true;
+            tipSpriteRenderer.enabled = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) 
+        if (collision.gameObject.name == tutorialTip.gameObjectName) 
         {
-            isColliding = false; 
-            displaySprite.enabled = false; 
+            tipSpriteRenderer.enabled = false; 
         }
     }
 }
