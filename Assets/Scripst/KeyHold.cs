@@ -9,26 +9,33 @@ public class KeyHold : MonoBehaviour
     RaycastHit2D hit;
     public Transform holdPoint;
     public float throwObject = 2;
-    void Start()
-    {
-
-    }
+    public SpriteRenderer displaySprite; 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!hold)
         {
-            if (!hold)
-            {
-                Physics2D.queriesStartInColliders = false;
-                hit = Physics2D.Raycast(transform.position + Vector3.up * 0.5f, Vector2.right * transform.localScale.x, distance);
+            Physics2D.queriesStartInColliders = false;
+            hit = Physics2D.Raycast(transform.position + Vector3.up * 0.5f, Vector2.right * transform.localScale.x, distance);
 
-                if (hit.collider != null && hit.collider.tag == "Key")
+            if (hit.collider != null && hit.collider.tag == "Key")
+            {
+                displaySprite.enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     hold = true;
+                    displaySprite.enabled = false; 
                 }
             }
             else
+            {
+                displaySprite.enabled = false;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (hit.collider != null && hit.collider.CompareTag("Cage"))
                 {
@@ -46,11 +53,11 @@ public class KeyHold : MonoBehaviour
         {
             hit.collider.gameObject.transform.position = holdPoint.position;
 
-            if (holdPoint.position.x > transform.position.x && hold)
+            if (holdPoint.position.x > transform.position.x)
             {
                 hit.collider.gameObject.transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
             }
-            else if (holdPoint.position.x < transform.position.x && hold)
+            else if (holdPoint.position.x < transform.position.x)
             {
                 hit.collider.gameObject.transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y * -1);
             }
