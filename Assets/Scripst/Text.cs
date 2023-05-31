@@ -6,6 +6,7 @@ public class Text : MonoBehaviour
 {
     public TutorialTip tutorialTip;
     public SpriteRenderer tipSpriteRenderer;
+    public int counter;
 
     private void Start()
     {
@@ -22,17 +23,30 @@ public class Text : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == tutorialTip.gameObjectName) 
+        if (counter < 1)
         {
-            tipSpriteRenderer.enabled = true;
+            if (collision.gameObject.name == tutorialTip.gameObjectName)
+            {
+                StartCoroutine(Deactivate());
+                tipSpriteRenderer.enabled = true;
+            }
         }
     }
 
+    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == tutorialTip.gameObjectName) 
         {
             tipSpriteRenderer.enabled = false; 
         }
+    }
+    */
+
+    private IEnumerator Deactivate()
+    {
+        counter++;
+        yield return new WaitForSeconds(5f);
+        tipSpriteRenderer.enabled = false;
     }
 }
