@@ -33,16 +33,6 @@ public class Text : MonoBehaviour
         }
     }
 
-    /*
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == tutorialTip.gameObjectName) 
-        {
-            tipSpriteRenderer.enabled = false; 
-        }
-    }
-    */
-
     private IEnumerator Deactivate()
     {
         counter++;

@@ -55,7 +55,6 @@ public class ButtonPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //targetPos = pointEnd.position;
             isButton1Pressed = true;
         }
     }
@@ -74,23 +73,10 @@ public class ButtonPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //targetPos = pointEnd.position;
             isButton2Pressed = true;
 
         }
     }
-
-
-    /*
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            //targetPos = pointEnd.position;
-            isButton1Pressed = true;
-        }
-    }
-    */
 
     private void OnCollisionExit2D(Collision2D other)
     {

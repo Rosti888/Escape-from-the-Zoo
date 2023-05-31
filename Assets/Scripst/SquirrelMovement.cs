@@ -78,17 +78,11 @@ public class SquirrelMovement : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + transform.up * -.1f, Color.green, 100f);
         if (Physics2D.Raycast(transform.position, transform.position - transform.up, contactFilter2D, results, .1f) > 0)
         {
-            Debug.Log(results[0].collider.name);
-            Debug.Log("I'm on an animal");
             Transform newParent = null;
             newParent = results[0].collider.transform;
             transform.SetParent(newParent);
             isOnBeaver = true;
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            /*
-            if (rb != null)
-                rb.simulated = false;
-            */
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();           
         }
     }
 
@@ -97,10 +91,6 @@ public class SquirrelMovement : MonoBehaviour
         isOnBeaver = false;
         transform.SetParent(null);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        /*
-        if (rb != null)
-            rb.simulated = true;
-        */
     }
 
     public  bool IsGrounded()

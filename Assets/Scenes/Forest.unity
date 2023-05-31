@@ -3105,7 +3105,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1957661943}
   groundCheckRadius: 0.05
   speed: 2.5
-  jumpForce: 11
+  jumpForce: 12
   glidingSpeed: 1
   rightCollider: {fileID: 0}
   isOnBeaver: 0
