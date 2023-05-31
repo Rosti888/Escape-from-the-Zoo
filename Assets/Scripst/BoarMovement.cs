@@ -108,8 +108,8 @@ public class BoarMovement : MonoBehaviour
     {
         if (collision.CompareTag("Obstacle") && isDashing)
         {
-            AnimObstacle.SetBool("IsDestroying", true);
             Obstacle.SetActive(false);
+            AnimObstacle.SetBool("IsDestroying", true);
         }
     }
 
