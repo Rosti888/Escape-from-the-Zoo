@@ -19,7 +19,6 @@ public class PauseMenu : MonoBehaviour
 
     public bool isPaused;
 
-
     private void Start()
     {
         pauseMenu.SetActive(false);
@@ -70,7 +69,7 @@ public class PauseMenu : MonoBehaviour
 
         if (characterSwitch.currentIndex == 0)
         {
-            Squirrel._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            Squirrel.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Squirrel.enabled = true;
             Beaver.enabled = false;
             Boar.enabled = false;
@@ -78,7 +77,7 @@ public class PauseMenu : MonoBehaviour
 
         if (characterSwitch.currentIndex == 1)
         {
-            Beaver._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            Beaver.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Squirrel.enabled = false;
             Beaver.enabled = true;
             Boar.enabled = false;
@@ -86,7 +85,7 @@ public class PauseMenu : MonoBehaviour
 
         if (characterSwitch.currentIndex == 2)
         {
-            Boar._rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            Boar.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             Squirrel.enabled = false;
             Beaver.enabled = false;
             Boar.enabled = true;

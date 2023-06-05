@@ -9,11 +9,6 @@ public class Finish : MonoBehaviour
     private bool isBeaverAtFinish;
     private bool isBoarAtFinish;
 
-    void Start()
-    {
-
-    }
-
     void FixedUpdate()
     {
         if (isSquirrelAtFinish == true && isBeaverAtFinish == true && isBoarAtFinish == true)
@@ -78,5 +73,4 @@ public class Finish : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
 }

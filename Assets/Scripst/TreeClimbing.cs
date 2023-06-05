@@ -9,15 +9,19 @@ public class TreeClimbing : MonoBehaviour
     private bool isLadder;
     private bool isClimbing;
 
-    public Rigidbody2D rb;
+    public CharacterSwitch characterSwitch;
+    public Rigidbody2D rigidBody;
 
     void Update()
     {
-        vertical = Input.GetAxisRaw("Vertical");
-
-        if (isLadder && Mathf.Abs(vertical) > 0f)
+        if (characterSwitch.currentIndex == 0)
         {
-            isClimbing = true;
+            vertical = Input.GetAxisRaw("Vertical");
+
+            if (isLadder && Mathf.Abs(vertical) > 0f)
+            {
+                isClimbing = true;
+            }
         }
     }
 
@@ -25,12 +29,12 @@ public class TreeClimbing : MonoBehaviour
     {
         if (isClimbing)
         {
-            rb.gravityScale = 0f;
-            rb.velocity = new Vector2(rb.velocity.x, vertical * speed);
+            rigidBody.gravityScale = 0f;
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, vertical * speed);
         }
         else
         {
-            rb.gravityScale = 4f;
+            rigidBody.gravityScale = 4f;
         }
     }
 

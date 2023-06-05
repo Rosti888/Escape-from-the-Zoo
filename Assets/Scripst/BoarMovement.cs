@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BoarMovement : MonoBehaviour
 {
-    public Animator Animations;
-    public Rigidbody2D _rigidbody;
+    public Animator animator;
+    public Rigidbody2D rigidBody;
     public Transform groundCheck;
-    public GameObject Obstacle;
-    public Animator AnimObstacle;
+    public GameObject obstacle;
+    public Animator animObstacle;
 
     public float groundCheckRadius = 0.05f;
     public float speed = 2f;
@@ -24,7 +24,7 @@ public class BoarMovement : MonoBehaviour
 
     void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -39,31 +39,31 @@ public class BoarMovement : MonoBehaviour
 
         if (inputX == 0)
         {
-            Animations.SetBool("IsRunning", false);
+            animator.SetBool("IsRunning", false);
         }
 
         else
 
         {
-            Animations.SetBool("IsRunning", true);
+            animator.SetBool("IsRunning", true);
         }
 
         var jumpInput = Input.GetButtonDown("Jump");
 
         if (!isDashing)
         {
-            _rigidbody.velocity = new Vector2(inputX * speed, _rigidbody.velocity.y);
+            rigidBody.velocity = new Vector2(inputX * speed, rigidBody.velocity.y);
         }
 
         if (jumpInput && IsGrounded())
         {
-            Animations.SetBool("IsJumping", true);
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
+            animator.SetBool("IsJumping", true);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
         }
 
         else
         {
-            Animations.SetBool("IsJumping", false);
+            animator.SetBool("IsJumping", false);
         }
 
         if (inputX != 0)
@@ -74,7 +74,7 @@ public class BoarMovement : MonoBehaviour
 
     public void DisableMovementAnimation()
     {
-        Animations.SetBool("IsRunning", false);
+        animator.SetBool("IsRunning", false);
     }
     public bool IsGrounded()
     {
@@ -108,8 +108,8 @@ public class BoarMovement : MonoBehaviour
     {
         if (collision.CompareTag("Obstacle") && isDashing)
         {
-            Obstacle.SetActive(false);
-            AnimObstacle.SetBool("IsDestroying", true);
+            obstacle.SetActive(false);
+            animObstacle.SetBool("IsDestroying", true);
         }
     }
 
@@ -117,13 +117,13 @@ public class BoarMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        float originalGravity = _rigidbody.gravityScale;
-        _rigidbody.gravityScale = 0f;
-        Animations.SetBool("IsDashing", true);
-        _rigidbody.velocity = new Vector2(transform.localScale.x * dashingVelocity, 0f);
+        float originalGravity = rigidBody.gravityScale;
+        rigidBody.gravityScale = 0f;
+        animator.SetBool("IsDashing", true);
+        rigidBody.velocity = new Vector2(transform.localScale.x * dashingVelocity, 0f);
         yield return new WaitForSeconds(dashingTime);
-        Animations.SetBool("IsDashing", false);
-        _rigidbody.gravityScale = originalGravity;
+        animator.SetBool("IsDashing", false);
+        rigidBody.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;

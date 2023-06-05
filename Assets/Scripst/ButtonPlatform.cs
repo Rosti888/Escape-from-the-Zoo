@@ -1,5 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 public class ButtonPlatform : MonoBehaviour
 {
     public GameObject buttonOff1;
@@ -49,8 +50,6 @@ public class ButtonPlatform : MonoBehaviour
         }
     }
 
-
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -67,7 +66,6 @@ public class ButtonPlatform : MonoBehaviour
 
         }
     }
-
 
     private void OnCollisionStay2D(Collision2D collision)
     {
