@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class BeaverMovement : MonoBehaviour
 {
-    public Animator Animations;
-    public Rigidbody2D _rigidbody;
+    public Animator animator;
+    public Rigidbody2D rigidBody;
     public Transform groundCheck;
 
     public float groundCheckRadius = 0.05f;
     public float speed = 2f;
     public float jumpForce = 10f;
-    private float _initialGravityScale;
+
     public CharacterSwitch characterSwitch;
 
     public LayerMask collisionMask;
     public LayerMask animalsMask;
 
     public bool isOnBoar;
+
     void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _initialGravityScale = _rigidbody.gravityScale;
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -30,28 +30,28 @@ public class BeaverMovement : MonoBehaviour
 
         if (inputX == 0)
         {
-            Animations.SetBool("IsRunning", false);
+            animator.SetBool("IsRunning", false);
         }
 
         else
 
         {
-            Animations.SetBool("IsRunning", true);
+            animator.SetBool("IsRunning", true);
         }
 
         var jumpInput = Input.GetButtonDown("Jump");
 
-        _rigidbody.velocity = new Vector2(inputX * speed, _rigidbody.velocity.y);
+        rigidBody.velocity = new Vector2(inputX * speed, rigidBody.velocity.y);
 
         if (jumpInput && IsGrounded())
         {
-            Animations.SetBool("IsJumping", true);
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
+            animator.SetBool("IsJumping", true);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
         }
 
         else
         {
-            Animations.SetBool("IsJumping", false);
+            animator.SetBool("IsJumping", false);
         }
 
         if (inputX != 0)
@@ -61,7 +61,7 @@ public class BeaverMovement : MonoBehaviour
     }
     public void DisableMovementAnimation()
     {
-        Animations.SetBool("IsRunning", false);
+        animator.SetBool("IsRunning", false);
         RaycastHit2D[] results = new RaycastHit2D[1];
         ContactFilter2D contactFilter2D = new ContactFilter2D();
         contactFilter2D.SetLayerMask(animalsMask);
@@ -110,24 +110,4 @@ public class BeaverMovement : MonoBehaviour
             this.transform.parent = null;
         }
     }
-
-    public void CheckOnBoar()
-    {
-        RaycastHit2D[] results = new RaycastHit2D[1];
-        ContactFilter2D contactFilter2D = new ContactFilter2D();
-        contactFilter2D.SetLayerMask(animalsMask);
-        Debug.DrawLine(transform.position, transform.position + transform.up * -.1f, Color.green, 100f);
-        if (Physics2D.Raycast(transform.position, transform.position - transform.up, contactFilter2D, results, .1f) > 0)
-        {
-            Transform newParent = null;
-            newParent = results[0].collider.transform;
-            transform.SetParent(newParent);
-            isOnBoar = true;
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            Debug.Log(rb);
-            if (rb != null)
-                rb.simulated = false;
-        }
-    }
-
 }

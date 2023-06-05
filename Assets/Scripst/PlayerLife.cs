@@ -7,19 +7,19 @@ public class PlayerLife : MonoBehaviour
 {
     public bool isBeaver;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rigidBody;
     public GameObject water;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("DeadZone"))
         {
-            rb.bodyType = RigidbodyType2D.Static;
+            rigidBody.bodyType = RigidbodyType2D.Static;
             RestartLevel();
         }
 
