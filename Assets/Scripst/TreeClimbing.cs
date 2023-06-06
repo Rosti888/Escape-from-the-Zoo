@@ -6,7 +6,7 @@ public class TreeClimbing : MonoBehaviour
 {
     private float vertical;
     public float speed;
-    private bool isLadder;
+    private bool isTree;
     private bool isClimbing;
 
     public CharacterSwitch characterSwitch;
@@ -18,7 +18,7 @@ public class TreeClimbing : MonoBehaviour
         {
             vertical = Input.GetAxisRaw("Vertical");
 
-            if (isLadder && Mathf.Abs(vertical) > 0f)
+            if (isTree && Mathf.Abs(vertical) > 0f)
             {
                 isClimbing = true;
             }
@@ -42,7 +42,7 @@ public class TreeClimbing : MonoBehaviour
     {
         if (collision.CompareTag("Tree"))
         {
-            isLadder = true;
+            isTree = true;
         }
     }
 
@@ -50,7 +50,7 @@ public class TreeClimbing : MonoBehaviour
     {
         if (collision.CompareTag("Tree"))
         {
-            isLadder = false;
+            isTree = false;
             isClimbing = false;
         }
     }

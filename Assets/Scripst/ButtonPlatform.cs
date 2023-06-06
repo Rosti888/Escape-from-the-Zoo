@@ -7,6 +7,7 @@ public class ButtonPlatform : MonoBehaviour
     public GameObject buttonOff2;
     public GameObject platform;
     public Transform pointStart, pointEnd;
+    public AudioSource audioSource;
     public float speed;
     public bool isButton1Pressed;
     public bool isButton2Pressed;
@@ -50,10 +51,11 @@ public class ButtonPlatform : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            audioSource.Play();
             isButton1Pressed = true;
         }
     }
@@ -63,16 +65,15 @@ public class ButtonPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isButton1Pressed = false;
-
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            audioSource.Play();
             isButton2Pressed = true;
-
         }
     }
 

@@ -8,6 +8,7 @@ public class ButtonDoor : MonoBehaviour
     public GameObject door;
     public Animator anim;
     public new BoxCollider2D collider;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class ButtonDoor : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            audioSource.Play();
             collider.enabled = false;
             button.SetActive(false);
             anim.SetBool("isOpen", true);

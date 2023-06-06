@@ -7,6 +7,7 @@ public class ButtonStorage : MonoBehaviour
     public GameObject storageBarrier;
     public GameObject buttonOff;
     public Animator storageAnim;
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class ButtonStorage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            audioSource.Play();
             storageAnim.SetBool("IsOpenning", true);
             storageBarrier.SetActive(false);
             buttonOff.SetActive(false);

@@ -5,11 +5,22 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioSource musicSource;
+
     public AudioClip BackgroundMusic;
+
+    public static AudioManager Instance;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
