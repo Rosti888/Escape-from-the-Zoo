@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject audioChecker;
 
     public SquirrelMovement Squirrel;
     public BeaverMovement Beaver;
@@ -52,7 +53,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        Debug.Log(isPaused);
         pauseButton.enabled = false;
         Squirrel.enabled = false;
         Beaver.enabled = false;
@@ -64,7 +64,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        Debug.Log(isPaused);
         pauseButton.enabled = true;
 
         if (characterSwitch.currentIndex == 0)

@@ -8,6 +8,7 @@ public class SquirrelMovement : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rigidBody;
     public Transform groundCheck;
+    public AudioSource audioSource;
 
     public float groundCheckRadius = 0.05f;
     public float speed = 2f;
@@ -134,6 +135,7 @@ public class SquirrelMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cage") && keyObject != null && rightCollider.enabled)
         {
+            audioSource.Play();
             collision.gameObject.GetComponent<Animator>().SetTrigger("Cage");
             keyObject.SetActive(false);
             keyObject = null;
