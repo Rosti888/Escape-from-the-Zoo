@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 46250147}
   - component: {fileID: 46250146}
   - component: {fileID: 46250145}
+  - component: {fileID: 46250148}
   m_Layer: 6
   m_Name: ground3
   m_TagString: Ground
@@ -422,6 +423,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &46250148
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46250144}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 7896227afcbd33541a490d2dfb74cba2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.2930717, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.6, y: 2.8}
+    newSize: {x: 6.6, y: 2.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.052950144, y: 2.8}
+  m_EdgeRadius: 0
 --- !u!1 &68940180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,6 +2451,7 @@ GameObject:
   - component: {fileID: 559137021}
   - component: {fileID: 559137020}
   - component: {fileID: 559137022}
+  - component: {fileID: 559137023}
   m_Layer: 6
   m_Name: upground
   m_TagString: Ground
@@ -2541,6 +2569,32 @@ PolygonCollider2D:
       - {x: 2.72, y: -0.59999996}
       - {x: 2.77, y: -0.59}
       - {x: 2.87, y: -0.53}
+--- !u!61 &559137023
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559137018}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 7896227afcbd33541a490d2dfb74cba2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -5.009835, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10, y: 1.2}
+    newSize: {x: 10, y: 1.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.042593956, y: 1.2}
+  m_EdgeRadius: 0
 --- !u!1 &582282486
 GameObject:
   m_ObjectHideFlags: 0
@@ -5968,6 +6022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1829809808}
+  audioChecker: {fileID: 0}
   Squirrel: {fileID: 38786047}
   Beaver: {fileID: 582282493}
   Boar: {fileID: 510115213}
